@@ -1,3 +1,19 @@
 #!/bin/sh
 export TZ="$1"/"$2"
 date
+
+#RR=$(date)
+#zenity --info --text="$RR"
+
+which gdialog 2> /dev/null && DIALOG=gdialog || DIALOG=dialog 
+end () { 
+exit 
+} 
+while true 
+do
+ $DIALOG --inputbox "Please select your timezone by entering Continent/City\n" 8 50 2>/tmp/input.$$ 
+export TZ=`cat /tmp/input.$$` 
+MSG="The time and date for your selescted timezone are:\n\n `date` \n\nContinue?" 
+$DIALOG --yesno "$MSG" 8 50 || end 
+done
+
