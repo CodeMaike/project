@@ -1,9 +1,10 @@
 #!/bin/sh
-export TZ="$1"/"$2"
-date
+#export TZ="$1"/"$2"
+#date
 
 #RR=$(date)
 #zenity --info --text="$RR"
+GETTEXT="gettext -d codefile"
 
 which gdialog 2> /dev/null && DIALOG=gdialog || DIALOG=dialog 
 end () { 
@@ -11,9 +12,11 @@ exit
 } 
 while true 
 do
- $DIALOG --inputbox "Please select your timezone by entering Continent/City\n" 8 50 2>/tmp/input.$$ 
+ $DIALOG --inputbox "`$GETTEXT \"Please select your timezone by entering Continent/City\"`" 8 50 2>/tmp/input.$$ 
 export TZ=`cat /tmp/input.$$` 
-MSG="The time and date for your selescted timezone are:\n\n `date` \n\nNew Search?" 
+MSG="`$GETTEXT \"The time in your selected timezone is:\"`\n\n`date` \n\n`$GETTEXT \"New Search?\"`"
+#MSG="The time and date for your selected timezone are:\n\n `date` \n\nNew Search?"
+#MSG="`$GETTEXT \"The time and date for your selected timezone are:\"`" \n\n `date` \n\n "`$GETTEXT \"New Search?\"`"
 $DIALOG --yesno "$MSG" 8 50 || end 
 done
 

@@ -20,3 +20,10 @@ msgstr ""
 msgid "Please select your timezone by entering Continent/City"
 msgstr "Bitte waehlen Sie Ihre Zeitzone nach dem Muster Kontinent/Stadt"
 
+#: codefile:16
+msgid "The date and time in your selected timezone are:"
+msgstr "Datum und Uhrzeit Ihrer gewaehlten Zeitzone sind:"
+
+#: codefile:16
+msgid "New Search?"
+msgstr "Neue Suche?"
