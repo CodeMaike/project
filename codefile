@@ -12,7 +12,7 @@ exit
 } 
 while true 
 do
- $DIALOG --inputbox "`$GETTEXT \"Please select your timezone by entering Continent/City\"`" 8 50 2>/tmp/input.$$ 
+ $DIALOG --inputbox "`$GETTEXT \"Please select your timezone by entering Continent/City\"`" 8 50 2>/tmp/input.$$ || end 
 export TZ=`cat /tmp/input.$$` 
 MSG="`$GETTEXT \"The date and time in your selected timezone are:\"`\n\n`date` \n\n`$GETTEXT \"New Search?\"`"
 $DIALOG --yesno "$MSG" 8 50 || end 
